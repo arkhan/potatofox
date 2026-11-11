@@ -1,0 +1,109 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+/* SPDX-FileCopyrightText: 2024 0xda157 */
+
+@import url("icons.css");
+@import url("misc.css");
+@import url("navbar.css");
+@import url("sidebar.css");
+@import url("urlbar.css");
+@import url("window-controls.css");
+
+:root:not([lwtheme]) body {
+  background-color: var(--uc-bg) !important;
+  /* Nova paints --toolbox-background-gradient on body; theme uses flat --uc-bg */
+  background-image: var(--lwt-additional-images, none) !important;
+  background-repeat: var(--lwt-background-tiling);
+  background-position: var(--lwt-background-alignment);
+}
+
+:root[lwtheme] body {
+  background-color: var(--lwt-accent-color) !important;
+  background-image: var(--lwt-additional-images) !important;
+  background-repeat: var(--lwt-background-tiling) !important;
+  background-position: var(--lwt-background-alignment) !important;
+}
+
+/* Translucency solo cuando NO hay tema */
+@media -moz-pref( "uc.tweak.translucency") {
+  :root:not([lwtheme]) #main-window {
+    background: transparent !important;
+  }
+
+  /* Con tema, usar el color del tema */
+  :root[lwtheme] #main-window {
+    background: var(--lwt-accent-color) !important;
+  }
+}
+
+/* remove bg from things - SOLO cuando NO hay tema de Firefox */
+:root:not([lwtheme]) {
+  #nav-bar,
+  #navigator-toolbox,
+  #browser,
+  tabbox#tabbrowser-tabbox,
+  splitter.devtools-toolbox-splitter,
+  #tabbrowser-tabpanels,
+  #sidebar-box,
+  #sidebar,
+  #sidebar-splitter {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+}
+
+/* Cuando hay tema, respetar los colores del tema */
+:root[lwtheme] {
+  #nav-bar,
+  #navigator-toolbox {
+    background-color: var(--toolbar-bgcolor) !important;
+    background-image: var(--lwt-header-image, none) !important;
+    color: var(--toolbar-color) !important;
+  }
+
+  #PersonalToolbar {
+    background-color: var(--toolbar-bgcolor) !important;
+    color: var(--toolbar-color) !important;
+  }
+}
+
+:root {
+  --uc-content-margin-top: 0px;
+  --uc-content-margin-right: 0px;
+  --uc-content-margin-bottom: 0px;
+  --uc-content-margin-left: 0px;
+  &:not(
+    [inFullscreen="true"],
+    [inDOMFullscreen="true"],
+    [chromehidden*="toolbar"],
+    [chromehidden*="menubar"]
+  ) {
+    @media not -moz-pref( "uc.tweak.borderless") {
+      --uc-content-margin-top: var(--uc-content-margin);
+      --uc-content-margin-right: var(--uc-content-margin);
+      --uc-content-margin-bottom: var(--uc-content-margin);
+      --uc-content-margin-left: var(--uc-content-margin);
+
+      & tabbox#tabbrowser-tabbox {
+        margin: var(--uc-content-margin-top) var(--uc-content-margin-right)
+          var(--uc-content-margin-bottom) var(--uc-content-margin-left) !important;
+        & browser {
+          border-radius: var(--uc-content-radius);
+          clip-path: circle(100%);
+          background-color: var(--uc-content-bg) !important;
+          box-shadow: var(--uc-content-shadow) !important;
+        }
+      }
+    }
+  }
+
+  @media -moz-pref( "uc.tweak.translucency") and (-moz-platform: macos) {
+    -moz-appearance: -moz-window-titlebar !important;
+  }
+}
+
+/* Nova (browser.nova.enabled) draws a 1px separator + 12px start radius on
+   .browserContainer; the theme owns content borders/radius itself. */
+#tabbrowser-tabpanels .browserContainer {
+  border: none !important;
+  border-radius: 0 !important;
+}
