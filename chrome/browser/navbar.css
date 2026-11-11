@@ -44,7 +44,7 @@
 
 /* fix margin for buttons on the sides */
 #PanelUI-menu-button {
-  padding: 0 var(--toolbarbutton-outer-padding) !important;
+  padding: 0 var(--toolbarbutton-outer-padding, 2px) !important;
 }
 #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
 #nav-bar-customization-target

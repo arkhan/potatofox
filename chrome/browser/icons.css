@@ -42,18 +42,6 @@
     list-style-image: url("../icons/bitwarden.svg");
   }
 
-  /* Privacy Badger -> it's own monochrome icon */
-  :is(
-      .webextension-browser-action,
-      .eom-addon-button
-    )[data-extensionid="jid1-MnnxcxisBPnSXQ@jetpack"]
-    .toolbarbutton-icon {
-    list-style-image: image-set(
-      url("moz-extension://51ac6f66-1bb5-4473-93a0-41ead025ec8f/icons/badger-19-disabled.png"),
-      url("moz-extension://51ac6f66-1bb5-4473-93a0-41ead025ec8f/icons/badger-38-disabled.png")
-    );
-  }
-
   /* Dark Reader -> custom svg icon (moon) */
   :is(
       .webextension-browser-action,

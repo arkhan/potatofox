@@ -4,9 +4,6 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 // fill svg color
 user_pref("svg.context-properties.content.enabled", true);
 
-// enable :has selector
-user_pref("layout.css.has-selector.enabled", true);
-
 // integrated calculator at urlbar
 user_pref("browser.urlbar.suggest.calculator", true);
 
